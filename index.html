@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Visit parks from all around the world right from your home with ParkVisit.">
+	<meta name="keywords" content="">
+	<meta name="author" content="MaximumFX">
+	<link href="https://maximumfx.nl/" rel="author">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:creator" content="@maximumfx_">
+	<meta name="twitter:title" content="ParkVisit">
+	<meta name="twitter:description" content="Visit parks from all around the world right from your home with ParkVisit.">
+	<meta name="twitter:image" content="https://maximumfx.nl/parkvisit/banner.jpg">
+
+	<meta property="og:title" content="ParkVisit">
+	<meta property="og:description" content="Visit parks from all around the world right from your home with ParkVisit.">
+	<meta property="og:url" content="http://maximumfx.nl/parkvisit/">
+	<meta property="og:site_name" content="ParkVisit">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="https://maximumfx.nl/parkvisit/banner.jpg">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/parkvisit/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/parkvisit/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/parkvisit/favicon-16x16.png">
+	<link rel="manifest" href="/parkvisit/site.webmanifest">
+	<link rel="mask-icon" href="/parkvisit/safari-pinned-tab.svg" color="#007aff">
+	<meta name="msapplication-TileColor" content="#007aff">
+	<meta name="theme-color" content="#007aff">
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/37076ba909.js" crossorigin="anonymous"></script>
+<!--	<link rel="stylesheet" type="text/css" href="css/map-icons.min.css">-->
+	<link href="css/custom.css" rel="stylesheet">
+	<title>ParkVisit</title>
+</head>
+<body>
+<section id="welcome">
+	<div class="container h-100">
+		<div class="row h-100 align-items-center justify-content-center">
+			<div class="col-sm-8 col-md-7 col-lg-5 text-center text-light">
+				<div data-page="welcome">
+					<img src="https://maximumfx.nl/ride/images/logo.svg" alt="Logo" class="logo">
+					<p>Visit parks from all around the world right from your home with <b>ParkVisit</b>.</p>
+					<a class="btn btn-light btn-block" onclick="openSection('join')" tabindex="-1">Join a party</a>
+					<a class="btn btn-light btn-block" onclick="openSection('create')" tabindex="-1">Create a party</a>
+				</div>
+				<div data-page="join" style="display: none;">
+					<img src="https://maximumfx.nl/ride/images/logo.svg" alt="Logo" class="logo">
+					<p>Enter the party code and your name to join the party.</p>
+					<div class="form-group">
+						<input type="text" class="form-control" id="party-join-code" placeholder="#0000" aria-label="Party code input">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="party-join-name" placeholder="Your name..." aria-label="Your name....">
+					</div>
+					<a class="btn btn-light btn-block disabled" id="party-join" onclick="if (!$(this).hasClass('disabled')) joinParty()" tabindex="1">Join the party</a>
+					<a class="btn btn-outline-light mt-2" onclick="openSection('welcome')" tabindex="-1">Back</a>
+				</div>
+				<div data-page="create" style="display: none;">
+					<img src="https://maximumfx.nl/ride/images/logo.svg" alt="Logo" class="logo">
+					<p>Enter your name to continue with creating a party.</p>
+					<div class="form-group">
+						<input type="text" class="form-control" id="party-create-name" placeholder="Your name..." aria-label="Your name....">
+					</div>
+					<div id="select-park"></div>
+					<a class="btn btn-light btn-block disabled" id="party-create" onclick="if (!$(this).hasClass('disabled')) createParty()" tabindex="2">Create a party</a>
+					<a class="btn btn-outline-light mt-2" onclick="openSection('welcome')" tabindex="-1">Back</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p class="powered-by text-light">Powered by <b><a href="/ride/" target="_blank">RideCounter</a></b>, by <a href="/" target="_blank"><b>MaximumFX</b></a></p>
+</section>
+
+<div class="container-fluid h-100" style="display: none;" id="main">
+	<div class="rc">
+		<span>Powered by <a href="/ride/" target="_blank"><b>RideCounter</b></a>, by <a href="/" target="_blank"><b>MaximumFX</b></a></span>
+		<img src="https://maximumfx.nl/ride/images/logo.svg" alt="Logo" class="logo">
+	</div>
+	<div class="row h-100">
+		<div class="col h-100 px-0">
+			<div id="pano" style="filter:invert(1);"></div>
+		</div>
+		<div class="col-auto h-100 px-0">
+			<div class="sidebar">
+				<div class="row no-gutters header bg-primary text-light px-3 py-2">
+					<div class="col-auto"><h2 class="m-0" id="party-id">#----</h2></div>
+					<div class="col">
+						<p class="m-0" id="players">You</p>
+					</div>
+				</div>
+				<div class="chat-wrapper">
+					<div class="chat">
+						<p id="status"></p>
+					</div>
+					<div class="input-group m-0">
+						<input type="text" class="form-control" id="chat" placeholder="Type a message" aria-label="Type a message" onkeydown="if(event.keyCode===13){chat(this.value);return false;}">
+						<div class="input-group-append">
+							<button class="btn btn-outline-primary" type="button" onclick="chat()">Send</button>
+						</div>
+					</div>
+				</div>
+				<div class="map-container">
+					<div class="map" id="map"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="embed-responsive" id="video" style="display: none;">
+	<div id="player"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!--<script type="text/javascript" src="js/map-icons.min.js"></script>-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="js/jquery.ddslick.min.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>

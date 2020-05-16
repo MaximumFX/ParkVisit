@@ -1,0 +1,258 @@
+@import 'https://fonts.googleapis.com/css?family=Nunito:400,400i,700,800&display=swap';
+
+:root {
+	--blue: #233265;
+	--blue64: #233265A3;
+	--blue32: #23326552;
+	--blue16: #23326529;
+	--blue08: #23326514;
+	--lightBlue: #EBEDF5;
+	--vibrantBlue: #007AFF;
+	--vibrantBlue2: #07A9F7;
+	--red: #F44336;
+	--yellow: #FFC107;
+
+	--bg: #fafafa;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-family: 'Nunito', sans-serif;
+	font-size: 16px;
+	background-color: var(--bg);
+	color: var(--blue);
+
+	-webkit-font-smoothing: antialiased;
+	-webkit-overflow-scrolling: touch;
+}
+/*@media only screen and (min-width: 768px) {*/
+/*	html,*/
+/*	body {*/
+/*		font-size: 16px;*/
+/*	}*/
+/*}*/
+article, div, section {
+	display: block;
+}
+::-moz-selection {
+	text-shadow: none;
+	color: inherit;
+	background: #0084ff;
+}
+::selection {
+	text-shadow: none;
+	color: inherit;
+	background: #0084ff;
+}
+img::-moz-selection {
+	color: inherit;
+	background: 0 0;
+}
+img::selection {
+	color: inherit;
+	background: 0 0;
+}
+img::-moz-selection {
+	color: inherit;
+	background: 0 0;
+}
+
+a,
+a:visited {
+	-webkit-transition: all .35s;
+	-o-transition: all .35s;
+	transition: all .35s;
+	text-decoration: none;
+	cursor: pointer !important;
+}
+a:hover,
+a:active,
+a:focus {
+	outline: 0 !important;
+}
+
+hr {
+	display: block;
+	border-top: 1px solid #000;
+	margin: 1em 0;
+	padding: 0;
+}
+
+#welcome {
+	background: linear-gradient(to right, rgba(0, 122, 255, .9), rgba(7, 169, 247, .9)), url('/ride/images/bg.jpg') center;
+	height: 100%;
+	overflow: hidden;
+}
+#welcome .logo {
+	width: 12rem;
+	height: 12rem;
+	display: inline-block;
+	margin-bottom: 2rem;
+}
+#welcome .powered-by {
+	position: absolute;
+	left: 1rem;
+	bottom: 1rem;
+	margin-bottom: 0;
+}
+#welcome .powered-by a {
+	color: #fff !important;
+}
+.dd-container {
+	margin-bottom: 1rem;
+}
+.dd-select {
+	font-size: 1rem !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	color: #495057 !important;
+	background: #fff !important;
+	background-clip: padding-box !important;
+	border: 1px solid #ced4da !important;
+	border-radius: .25rem !important;
+}
+.dd-selected {
+	border: none;
+	font-size: 1rem !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	color: #495057 !important;
+}
+.dd-options {
+	max-height: 20rem;
+	overflow-y: scroll !important;
+	border: 1px solid #ced4da !important;
+	box-shadow: none !important;
+}
+.dd-option {
+	position: relative;
+}
+.dd-option-image,
+.dd-selected-image {
+	float: none !important;
+	line-height: 2 !important;
+	margin-right: 1rem !important;
+}
+.dd-selected-text,
+.dd-option-text {
+	margin: 0;
+	line-height: 1.2 !important;
+	padding-right: .5rem;
+	position: absolute;
+	top: 50%;
+	right: .5rem;
+	left: 90px;
+	transform: translateY(-50%);
+}
+
+#main .rc {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--primary);
+	color: #fff;
+	z-index: 1;
+	padding: .5rem;
+	border-bottom-right-radius: .5rem;
+	line-height: 1.5rem;
+	white-space: nowrap;
+}
+#main .rc a {
+	text-decoration: none !important;
+	color: #fff !important;
+}
+#main .rc span {
+	-webkit-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+	display: inline-block;
+	overflow: hidden;
+	height: 1.5rem;
+	max-width: 0;
+	vertical-align: bottom;
+}
+#main .rc:hover span {
+	max-width: 20rem;
+}
+#main .rc img {
+	width: 1.5rem;
+	display: inline-block;
+}
+
+#pano {
+	height: 100%;
+	width: 100%;
+}
+#pano img[src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png"],
+#pano img[src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2_hdpi.png"] {
+	filter: invert(1);
+}
+.gm-style .gm-style-iw-c {
+	filter: invert(1);
+}
+.col-auto {
+	width: 24rem;
+}
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.sidebar .header {
+	flex: 0 0 auto;
+}
+.sidebar .chat-wrapper {
+	flex: 1 1 auto;
+	position: relative;
+	overflow-y: auto;
+}
+.sidebar .chat-wrapper .chat {
+	max-height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 38px;
+	left: 0;
+	margin: 0;
+	padding: 0 1rem 1rem;
+	overflow-y: auto;
+}
+.sidebar .chat-wrapper .chat p {
+	margin-bottom: 0;
+}
+.sidebar .chat-wrapper .input-group {
+	position: absolute;
+	bottom: 0;
+}
+.sidebar .map-container {
+	flex: 0 0 auto;
+	filter: brightness(2);
+}
+.sidebar .map-container img[src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png"],
+.sidebar .map-container img[src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2_hdpi.png"] {
+	filter: brightness(0.5);
+}
+.map-container {
+	padding-top: 100%;
+	position: relative;
+}
+.map {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+#video {
+	position: absolute;
+	top: 0;
+	right: 24rem;
+	bottom: 0;
+	left: 0;
+	width: auto;
+	z-index: 100;
+	overflow: hidden;
+}
